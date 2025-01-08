@@ -1,0 +1,58 @@
+.modal {
+  position: fixed;
+  top: 30vh;
+  left: 10%;
+  width: 80%;
+  z-index: 100;
+  overflow: hidden;
+  background-color: rgba(215, 215, 215, 1);
+  border-radius: 12px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+
+.header {
+  background: #afafaf;
+  padding: 0.5rem 1rem;
+}
+
+.header h2 {
+  margin: 0;
+  color: #000;
+}
+
+.content {
+  padding: 1rem;
+}
+
+.actions {
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    left: calc(50% - 20rem);
+    width: 40rem;
+  }
+}
+
+.cart-container{
+  height: 500px;
+  width: 300px;
+  background-color: aqua;
+  position: fixed;
+  top: 30vh;
+  left: 40%;
+  z-index: 100;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.75);
+}

@@ -1,17 +1,21 @@
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import Meals from './Components/Meals';
-import Cart from './Header/CartComponents/Cart';
+import Meals from './Components/Menu/Meals';
+import Navigation from './Header/Navigation';
+import Home from './Components/Home/Home';
 
 function App() {
 
   return (
-    <div className="App">
-      <div className='title-cart'>
-        <h1>Platillos</h1>
-        <Cart />
+    <>
+      <Navigation />
+      <div className="App">
+        <Routes>
+          <Route path='/' element={<Home />}/>
+          <Route path='/Menu/*' element={<Meals />}/>
+        </Routes>
       </div>
-      <Meals />
-    </div>
+    </>
   );
 }
 

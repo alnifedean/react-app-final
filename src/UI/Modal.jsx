@@ -7,6 +7,8 @@ import { useAuthContext } from '../context/AuthContext';
 const ModalOverlay = ({ onConfirm }) => {
 
   const {data,setData, itemsState, setItemsState} = useAuthContext();
+
+
   
   useEffect(() => {
     if (data.id === 'abcd-0001') {
@@ -164,10 +166,12 @@ const ModalOverlay = ({ onConfirm }) => {
     <div className={styles["cart-container"]}>
       <h2>Carrito</h2>
 
-      <div>
-        <label>Quesadillas:
+      <div className={styles['items-container']}>
+        <label>Quesadillas:</label>
+        <div className={styles.actions}>
           <input type="number" value={itemsState.quesadillas || 0} onChange={quesadillasItems} />
-        $ {prices.quesadillas}</label>
+          $ {prices.quesadillas}
+        </div>
       </div>
 
       <div>

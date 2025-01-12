@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useAuthContext } from '../../context/AuthContext';
 import styles from './Cart.module.css'
 import Modal from '../../UI/Modal'
-import { useAuthContext } from '../../context/AuthContext';
+import cartImg from '../../UI/Images/cart-icon.jpg'
 
 const Cart = () => {
 
@@ -77,10 +78,12 @@ const Cart = () => {
 
   return(
     <>
-      <div className={styles["cart-container"]}>
-        <h2>Carrito</h2>
-        <button type='button' onClick={modalHandler}>Abrir</button>
-        <input type="number" value={value} readOnly/>
+      <div className={styles["cart-container"]} onClick={modalHandler} >
+        <div className={styles.cartInputs}>
+          <h3>Carrito</h3>
+          <p className={styles.cartInput}>{value}</p>
+        </div>
+        <img src={cartImg} alt='Descripcion de la imagen' />
       </div>
       {openCart && <Modal onConfirm={closeModal} />}
     </>

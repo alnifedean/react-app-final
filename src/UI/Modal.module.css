@@ -37,15 +37,7 @@
   }
 }
 
-.cart-container{
-  height: 500px;
-  width: 300px;
-  background-color: aqua;
-  position: fixed;
-  top: 30vh;
-  left: 40%;
-  z-index: 100;
-}
+
 
 .backdrop {
   position: fixed;
@@ -56,3 +48,40 @@
   z-index: 10;
   background: rgba(0, 0, 0, 0.75);
 }
+
+.cart-container {
+  width: 50%;
+  background-color: #eee;
+  position: fixed;
+  top: 25vh;
+  left: 25%;
+  z-index: 100;
+  padding: 10px;
+}
+
+.items-container {
+  background-color: brown;
+  width: 100%;
+  height: 50px;
+  color: #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 10px solid #f00;
+  border-radius: 15px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  background-color: blue;
+  width: 30%;
+  
+}
+
+.actions input {
+  width: 62px;
+  text-align: center;
+}
+

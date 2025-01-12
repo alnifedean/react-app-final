@@ -1,0 +1,59 @@
+.navigationContainer {
+  background-color: #ED1C2C;
+  height: 100px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 1000;
+  margin: 0;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  box-shadow: 0 0 10px 0 #000;
+}
+
+.actionContainer {
+  width: 40vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.actionButtons {
+  width: 150px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttons {
+  text-decoration: none;
+  color: #eee;
+  font-weight: 200;
+  font-size: 24px;
+  
+}
+
+.buttons:hover{
+  font-size: 26px;
+  color: #dfe65d;
+}
+
+.titleNav {
+  height: 55px;
+  color: #eee;
+  letter-spacing: 4px;
+  font-weight: lighter;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  margin: 20px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.titleNav:hover {
+  font-size: 41px;
+  color: #dfe65d;
+}

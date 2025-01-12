@@ -10,7 +10,7 @@ export const useHttp = () => {
     const data = await response.json();
     return data.dishes ? data.dishes : {};
   };
-
+  // agregar un try catch
 
   const listDishes = (dishes) => {
     if (!dishes) {
@@ -33,7 +33,6 @@ export const useHttp = () => {
   const getDishes = useCallback(async () => { 
     const dishesData = await fetchDishes();
     const listaDishes = listDishes(dishesData); 
-    console.log('Lista de platillos:',listaDishes);
     return listaDishes;
   },[]); 
   return getDishes;

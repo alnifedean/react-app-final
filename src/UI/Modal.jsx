@@ -1,7 +1,8 @@
 import { createPortal } from 'react-dom'
 import { useEffect } from 'react';
-import styles from './Modal.module.css'
 import { useAuthContext } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
+import styles from './Modal.module.css'
 
 
 const ModalOverlay = ({ onConfirm }) => {
@@ -161,12 +162,13 @@ const ModalOverlay = ({ onConfirm }) => {
   };
 
   const total = Object.values(prices).reduce((suma, valor) => suma + valor, 0);
+  const value = (+itemsState.quesadillas)+(+itemsState.tortas)+(+itemsState.tacos)+(+itemsState.gorditas)+(+itemsState.tostadas)+(+itemsState.refrescos)+(+itemsState.agua)+(+itemsState.pastel)+(+itemsState.pay)+(+itemsState.helado)
 
   return(
     <div className={styles["cart-container"]}>
       <h2>Carrito</h2>
 
-      <div className={styles['items-container']}>
+      <div className={ itemsState.quesadillas > 0 ? styles.itemsContainer : styles.itemsContainerInactive }>
         <label>Quesadillas:</label>
         <div className={styles.actions}>
           <input type="number" value={itemsState.quesadillas || 0} onChange={quesadillasItems} />
@@ -174,62 +176,91 @@ const ModalOverlay = ({ onConfirm }) => {
         </div>
       </div>
 
-      <div>
-        <label>Tortas:
+      <div className={ itemsState.tortas > 0 ? styles.itemsContainer : styles.itemsContainerInactive }>
+        <label>Tortas:</label>
+        <div className={styles.actions}>
           <input type="number" value={itemsState.tortas || 0} onChange={tortasItems} />
-        $ {prices.tortas}</label>
+          $ {prices.tortas}
+        </div>
       </div>
 
-      <div>
-        <label>Tacos:
+      <div className={ itemsState.tacos > 0 ? styles.itemsContainer : styles.itemsContainerInactive }>
+        <label>Tacos:</label>
+        <div className={styles.actions}>
           <input type="number" value={itemsState.tacos || 0} onChange={tacosItems} />
-        $ {prices.tacos}</label>
+          $ {prices.tacos}
+        </div>
       </div>
 
-      <div>
-        <label>Gorditas:
+      <div className={ itemsState.gorditas > 0 ? styles.itemsContainer : styles.itemsContainerInactive }>
+        <label>Gorditas:</label>
+        <div className={styles.actions}>
           <input type="number" value={itemsState.gorditas || 0} onChange={gorditasItems} />
-        $ {prices.gorditas}</label>
+          $ {prices.gorditas}
+        </div>
       </div>
 
-      <div>
-        <label>Tostadas:
+      <div className={ itemsState.tostadas > 0 ? styles.itemsContainer : styles.itemsContainerInactive }>
+        <label>Tostadas:</label>
+        <div className={styles.actions}>
           <input type="number" value={itemsState.tostadas || 0} onChange={tostadasItems} />
-        $ {prices.tostadas}</label>
+          $ {prices.tostadas}
+        </div>
       </div>
 
-      <div>
-        <label>Refrescos:
+      <div className={ itemsState.refrescos > 0 ? styles.itemsContainer : styles.itemsContainerInactive }>
+        <label>Refrescos:</label>
+        <div className={styles.actions}>
           <input type="number" value={itemsState.refrescos || 0} onChange={refrescosItems} />
-        $ {prices.refrescos}</label>
+          $ {prices.refrescos}
+        </div>
       </div>
 
-      <div>
-        <label>Agua:
+      <div className={ itemsState.agua > 0 ? styles.itemsContainer : styles.itemsContainerInactive }>
+        <label>Agua:</label>
+        <div className={styles.actions}>
           <input type="number" value={itemsState.agua || 0} onChange={aguaItems} />
-        $ {prices.agua}</label>
+          $ {prices.agua}
+        </div>
       </div>
 
-      <div>
-        <label>Pastel:
+      <div className={ itemsState.pastel > 0 ? styles.itemsContainer : styles.itemsContainerInactive }>
+        <label>Pastel:</label>
+        <div className={styles.actions}>
           <input type="number" value={itemsState.pastel || 0} onChange={pastelItems} />
-        $ {prices.pastel}</label>
+          $ {prices.pastel}
+        </div>
       </div>
 
-      <div>
-        <label>Pay:
+      <div className={ itemsState.pay > 0 ? styles.itemsContainer : styles.itemsContainerInactive }>
+        <label>Pay:</label>
+        <div className={styles.actions}>
           <input type="number" value={itemsState.pay || 0} onChange={payItems} />
-        $ {prices.pay}</label>
-      </div>
-      
-      <div>
-        <label>Helado:
-          <input type="number" value={itemsState.helado || 0} onChange={heladoItems} />
-        $ {prices.helado}</label>
+          $ {prices.pay}
+        </div>
       </div>
 
-      <button type='button' onClick={onConfirm}>Cerrar</button>
-      <span>Total: ${total}</span>
+      <div className={ itemsState.helado > 0 ? styles.itemsContainer : styles.itemsContainerInactive }>
+        <label>Helado:</label>
+        <div className={styles.actions}>
+          <input type="number" value={itemsState.helado || 0} onChange={heladoItems} />
+          $ {prices.helado}
+        </div>
+      </div>
+
+      <div className={value === 0 ? styles.emptyCart : styles['display: none']}>{value === 0 ? 'No hay items...' : ''}</div>
+
+      <div className={styles.totalContainer}>
+        <div>
+          <button className={styles.buttonCerrar} type='button' onClick={onConfirm}>Cerrar</button>
+          <Link to={'/info'} ><button className={styles.buttonPagar} type='button' onClick={onConfirm} >Pagar</button></Link>
+          
+        </div>
+        <div className={styles.totals}>
+          <input type="number" value={value || 0} readOnly />
+          <span>$ {total}</span>
+        </div>
+      </div>
     </div>
   );
 };

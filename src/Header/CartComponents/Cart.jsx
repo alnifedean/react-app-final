@@ -83,7 +83,7 @@ const Cart = () => {
           <h3>Carrito</h3>
           <p className={styles.cartInput}>{value}</p>
         </div>
-        <img src={cartImg} alt='Descripcion de la imagen' />
+        <img src={cartImg} alt='cart icon' />
       </div>
       {openCart && <Modal onConfirm={closeModal} />}
     </>

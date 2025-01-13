@@ -1,14 +1,13 @@
 import { useState, useReducer, useRef } from 'react';
 import { useAuthContext } from '../../context/AuthContext';
-import { useSearchParams } from 'react-router-dom'
 import styled from 'styled-components';
+// import image from '../../UI/Images/dishes/abcd-0001.jpg'
 
 
 const ContainerItem = styled.div`
 	background-color: #ED1C2C;
 	height: 350px;
 	width: ${props => props.open ? '700px':'350px'};
-	z-index: ${props => props.open ? '50':''};
 	padding: 5px 10px;
 	display: flex;
 	flex-direction: column;
@@ -46,7 +45,7 @@ const ControlsItems = styled.div`
 
 const Input = styled.input`
 	width: 20%;
-	box-shadow: 0 0 10px 0 ${({$invalid})=> $invalid ? '#fff' : '#f00'}
+	box-shadow: 0 0 15px 0 ${({invalid})=> invalid ? '#fff' : '#f00'}
 	padding: 2px;
 	margin: 2px;
 	text-align: center;
@@ -133,7 +132,7 @@ function MealItemSub( { item, openHandler, isOpen } ){
 	});
 	const [isValid, setIsValid] = useState(true)
 	const containerRef = useRef(null);
-	const [searchParams, setSearchParams] = useSearchParams();
+
 
 	const increaseButton = () =>{
 
@@ -164,12 +163,12 @@ function MealItemSub( { item, openHandler, isOpen } ){
 	const openingContainer = () => {
 		openHandler(item.id);
 		if (containerRef.current) { containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-		setSearchParams({id: item.title})
+
 	};
 
 	const closingContainer = () => {
 		openHandler(null);
-		setSearchParams('')
+
 	};
 
 	const images = require.context('../../UI/Images/dishes', false, /\.jpg$/);
@@ -177,7 +176,7 @@ function MealItemSub( { item, openHandler, isOpen } ){
 		try {
 			return images(`./${id}.jpg`);
 		} catch (error) {
-			return 'src/UI/Images/default.jpg'; // Imagen predeterminada en caso de que no exista la imagen específica
+			return 'src/UI/Images/default.jpg';
 		}
 	};
 	const image = getImage(item.id);
@@ -199,7 +198,7 @@ function MealItemSub( { item, openHandler, isOpen } ){
 			<ControlsItems>
 				<Button onClick={openingContainer}>Ver mas</Button>
 				<Price>${item.price}</Price>
-				<Input type="number" min={0} value={numberItems.number || 0} onChange={changeHandler} $invalid={isValid} />
+				<Input type="number" min={0} value={numberItems.number || 0} onChange={changeHandler} invalid={isValid} />
 				<Button onClick={increaseButton}>Agregar</Button>
 			</ControlsItems>
 

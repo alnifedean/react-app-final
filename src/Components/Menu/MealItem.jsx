@@ -19,7 +19,6 @@ function MealItem({ items = [] }){
 
 	const openHandler = (id) => {
 		setActiveId(id)
-		console.log('Mealitem>>>',id)
 	};
 
 	return(

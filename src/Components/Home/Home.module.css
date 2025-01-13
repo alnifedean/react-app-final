@@ -5,7 +5,14 @@
   width: 80%;
   border-radius: 15px;
   box-shadow: 0 0 10px 0 #000;
-  
+
+  @media (max-width: 750px) {
+    height: 700px;
+  }
+
+  @media (max-width: 550px) {
+    margin-top: 70px;
+  }
 }
 
 .mainContainer h1 {
@@ -18,6 +25,10 @@
   letter-spacing: 2px;
   font-size: 36px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+  @media (max-width: 550px) {
+    margin: 0 5px 0 5px;
+  }
 }
 
 .infoContainer {
@@ -26,12 +37,21 @@
   width: 100%;
   height: 90%;
   border-radius: 15px;
+
+  @media (max-width: 750px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .imageContainer {
   width: 50%;
   margin: 15px;
   border-radius: 5px;
+
+  @media (max-width: 750px) {
+    width: 90%;
+  }
 }
 
 .imageContainer img {
@@ -52,4 +72,14 @@
   text-align: center;
   font-weight: bolder;
   font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media (max-width: 1000px) {
+    font-size: 13px;
+  }
+
+  @media (max-width: 750px) {
+    width: 90%;
+  }
 }

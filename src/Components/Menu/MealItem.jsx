@@ -10,6 +10,10 @@ const Container = styled.div`
 	align-items: center;
 	flex-wrap: wrap;
 	gap: 30px;
+
+	@media (max-width: 550px){
+		margin-top: 50px;
+	}
 `;
 
 

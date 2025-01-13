@@ -6,11 +6,16 @@ export const useHttp = () => {
 
   const fetchDishes = async () => {
     const url = `${URL_BASE}.json`
-    const response = await fetch(url);
-    const data = await response.json();
-    return data.dishes ? data.dishes : {};
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data.dishes ? data.dishes : {};
+    } catch (error) {
+      console.error('Error fetching las cosas');
+      return {};
+    }
   };
-  // agregar un try catch
 
   const listDishes = (dishes) => {
     if (!dishes) {
@@ -30,10 +35,15 @@ export const useHttp = () => {
   };
 
 
-  const getDishes = useCallback(async () => { 
-    const dishesData = await fetchDishes();
-    const listaDishes = listDishes(dishesData); 
-    return listaDishes;
+  const getDishes = useCallback(async () => {
+    try {
+      const dishesData = await fetchDishes();
+      const listaDishes = listDishes(dishesData); 
+      return listaDishes;
+    } catch (error) {
+      console.error('Error sacando los platillos', error);
+      return[];
+    }
   },[]); 
   return getDishes;
 };

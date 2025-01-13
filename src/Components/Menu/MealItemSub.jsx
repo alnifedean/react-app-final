@@ -18,7 +18,8 @@ const ContainerItem = styled.div`
 
 
 	@media (max-width: 720px){
-	justify-content: space-around;
+		justify-content: space-around;
+		height: auto;
 	}
 `;
 
@@ -40,6 +41,12 @@ const ControlsItems = styled.div`
 	@media (max-width: 720px){
 	flex-direction: column;
 	align-items: center;
+	}
+
+	@media (max-width: 720px){
+		height: 100px;
+		justify-content: space-around;
+		margin-top: 10px;
 	}
 `;
 
@@ -92,15 +99,18 @@ const ImagenContainer = styled.div`
 	display: flex;
 	border-radius: 5px;
 
-	@media (max-width: 720px){
-	display: none
-	}
+	
 `;
 
 const Img = styled.img`
 	width: 100%;
 	max-width: 330px;
 	border-radius: 5px
+
+	@media (max-width: 600px) {
+		background-color: lightcoral;
+		font-size: 14px;
+	}
 `;
 
 const Description = styled.div`
